@@ -30,7 +30,7 @@ componentDidMount() {
 
 refreshList = () => {
   axios
-  .get(`${myBaseUrl}api/goals/`)
+  .get(`${myBaseUrl}goals/`)
   .then(res => this.setState({ todoList: res.data }))
   .catch(err => console.log(err))
 }
