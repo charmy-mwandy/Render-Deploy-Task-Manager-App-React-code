@@ -46,7 +46,7 @@ refreshList = () => {
     if (item.id) {
         // Update existing item using PUT
         axios
-            .put(`{myBaseUrl}/api/goals/${item.id}/`, item)
+            .put(`${myBaseUrl}/api/goals/${item.id}/`, item)
             .then(res => this.refreshList())
             .catch(err => console.log(err));
     } else {
@@ -61,7 +61,7 @@ refreshList = () => {
 
   handleDelete = item => {
     axios
-    .delete(`{myBaseUrl}/api/goals/${item.id}/`)
+    .delete(`${myBaseUrl}/api/goals/${item.id}/`)
     .then(res => this.refreshList())
   };
 
