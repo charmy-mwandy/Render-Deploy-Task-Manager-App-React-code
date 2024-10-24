@@ -28,12 +28,22 @@ componentDidMount() {
   this.refreshList();
 }
 
+// refreshList = () => {
+//   axios
+//   .get(`${myBaseUrl}goals/`)
+//   .then(res => this.setState({ todoList: res.data }))
+//   .catch(err => console.log(err))
+// }
 refreshList = () => {
   axios
-  .get(`${myBaseUrl}goals/`)
-  .then(res => this.setState({ todoList: res.data }))
-  .catch(err => console.log(err))
-}
+    .get(`${myBaseUrl}api/goals/`)
+    .then(res => {
+      console.log("API response:", res.data);  // Log the API response
+      this.setState({ todoList: res.data });
+    })
+    .catch(err => console.log("API error:", err));
+};
+
 
 
 //Creating toggle properties
@@ -52,7 +62,7 @@ refreshList = () => {
     } else {
         // Create new item using POST
         axios
-            .post("${myBaseUrl}api/goals/", item)
+            .post(`${myBaseUrl}api/goals/`, item)
             .then(res => this.refreshList())
             .catch(err => console.log(err));
     }
